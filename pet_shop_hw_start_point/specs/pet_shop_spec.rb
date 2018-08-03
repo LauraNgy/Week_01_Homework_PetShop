@@ -218,6 +218,13 @@ class TestPetShop < Minitest::Test
     assert_equal(1000, total_cash(@pet_shop))
   end
 
+  def test_sell_pet_to_customer__pet_removed
+    customer = @customers[0]
+    pet = find_pet_by_name(@pet_shop,"Arthur")
 
+    sell_pet_to_customer(@pet_shop, pet, customer)
+
+    assert_equal(5, stock_count(@pet_shop))
+  end
 
 end
